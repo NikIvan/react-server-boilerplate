@@ -5,6 +5,7 @@ import App from './app';
 import template from './template';
 
 const server = express();
+const SERVER_PORT = 8080;
 
 server.use('/assets', express.static('assets'));
 
@@ -20,5 +21,5 @@ server.get('/', (req, res) => {
   }));
 });
 
-server.listen(8080);
-console.log('listening');
+server.listen(SERVER_PORT);
+console.log(`Listening on port localhost:${SERVER_PORT}`);

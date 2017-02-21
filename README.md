@@ -27,7 +27,7 @@ npm install react-server-boilerplate --save
 - [babel-preset-react](https://github.com/babel/babel/tree/master/packages): Babel preset for all React plugins.
 - [css-loader](https://github.com/webpack/css-loader): css loader module for webpack
 - [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin): Extract text from bundle into a file.
-- [functionhappy](https://github.com/Roilan/react-server-boilerplate): semistandard wrapped with eslint-config-function-happy
+- [functionhappy](https://github.com/Roilan/function-happy): semistandard wrapped with eslint-config-function-happy
 - [json-loader](https://github.com/webpack/json-loader): json loader module for webpack
 - [node-sass](https://github.com/sass/node-sass): Wrapper around libsass
 - [sass-loader](https://github.com/jtangelder/sass-loader): Sass loader for webpack

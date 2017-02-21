@@ -4,8 +4,13 @@ var nodeExternals = require('webpack-node-externals');
 
 var isProduction = process.env.NODE_ENV === 'production';
 var productionPluginDefine = isProduction ? [
-  new webpack.DefinePlugin({'process.env': {'NODE_ENV': JSON.stringify('production')}})
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  })
 ] : [];
+
 var clientLoaders = isProduction ? productionPluginDefine.concat([
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.OccurrenceOrderPlugin(),
@@ -43,7 +48,7 @@ module.exports = [
       loaders: [
         {
           test: /\.js$/,
-          loader: 'babel'
+          loader: 'babel-loader'
         }
       ].concat(commonLoaders)
     }
@@ -56,7 +61,8 @@ module.exports = [
       filename: 'bundle.js'
     },
     plugins: clientLoaders.concat([
-      new ExtractTextPlugin('index.css', {
+      new ExtractTextPlugin({
+        filename: 'index.css',
         allChunks: true
       })
     ]),
@@ -64,17 +70,18 @@ module.exports = [
       loaders: [
         {
           test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel'
+          exclude: '/node_modules/',
+          loader: 'babel-loader'
         },
         {
           test: /\.scss$/,
-          loader: ExtractTextPlugin.extract('css!sass')
+          loader: ExtractTextPlugin.extract('css-loader!sass-loader')
         }
       ]
     },
     resolve: {
-      extensions: ['', '.js', '.jsx']
+      enforceExtension: false,
+      extensions: ['.js', '.jsx']
     }
   }
 ];
